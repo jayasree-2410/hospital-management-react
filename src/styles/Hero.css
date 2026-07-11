@@ -1,0 +1,235 @@
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(255,255,255,.95) 0%,
+            rgba(255,255,255,.88) 28%,
+            rgba(255,255,255,.55) 52%,
+            rgba(255,255,255,.15) 75%,
+            rgba(255,255,255,0) 100%
+        ),
+        url("../assets/images/hero.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+}
+
+/* Bottom Fade */
+
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(transparent, #ffffff);
+}
+
+/* ===========================
+   HERO CONTENT
+=========================== */
+
+.hero-content {
+    max-width: 620px;
+    margin-left: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #1565e8;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 35px;
+    max-width: 520px;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.hero-btns {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.hero-btns .btn {
+    padding: 14px 34px;
+    font-size: 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.hero-btns .btn-primary:hover {
+    transform: translateY(-3px);
+}
+
+.hero-btns .btn-outline-primary:hover {
+    transform: translateY(-3px);
+}
+
+/* ===========================
+   FEATURE CARDS
+=========================== */
+
+.hero-cards {
+    position: relative;
+    margin-top: -60px;
+    z-index: 5;
+}
+
+.hero-features {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    width: 280px;
+    min-height: 180px;
+
+    background: #fff;
+    border-radius: 20px;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    box-shadow: 0 12px 35px rgba(0,0,0,.12);
+
+    transition: all .3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px rgba(21,101,232,.25);
+}
+
+.feature-card h3 {
+    font-size: 26px;
+    color: #1565e8;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.feature-card p {
+    font-size: 17px;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 992px) {
+
+    .hero {
+        height: 75vh;
+        background-position: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin: 0 30px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .hero-cards {
+        margin-top: 40px;
+    }
+
+    .hero-features {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero {
+        text-align: center;
+        height: 70vh;
+    }
+
+    .hero-content {
+        margin: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .hero-btns {
+        justify-content: center;
+    }
+
+    .feature-card {
+        width: 100%;
+        max-width: 340px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .hero {
+        height: 65vh;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
+    }
+}

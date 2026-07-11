@@ -1,0 +1,25 @@
+.topbar{
+    height:70px;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.top-icon{
+    font-size:24px;
+    cursor:pointer;
+}
+
+.profile-icon{
+    font-size:36px;
+    color:#1565e8;
+}

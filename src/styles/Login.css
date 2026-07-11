@@ -1,0 +1,307 @@
+/* ===========================
+   LOGIN PAGE
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.login-container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    background:#f4f8fc;
+}
+
+/* ===========================
+   LEFT SECTION
+=========================== */
+
+.login-left{
+    flex:1;
+    background-image:url("../assets/images/hero.png");
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+
+.login-overlay{
+    width:100%;
+    height:100%;
+    background:rgba(21,101,232,.65);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:60px;
+}
+
+.hospital-content{
+    color:white;
+    max-width:550px;
+}
+
+.hospital-content h1{
+    font-size:54px;
+    font-weight:800;
+    margin-bottom:25px;
+}
+
+.hospital-content p{
+    font-size:20px;
+    line-height:1.8;
+}
+
+/* ===========================
+   RIGHT SECTION
+=========================== */
+
+.login-right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f8fbff;
+}
+
+/* ===========================
+   LOGIN CARD
+=========================== */
+
+.login-card{
+    width:430px;
+    background:white;
+    border-radius:20px;
+    padding:45px;
+    box-shadow:0 15px 45px rgba(0,0,0,.15);
+}
+
+.login-logo{
+    width:90px;
+    height:90px;
+
+    margin:auto;
+
+    background:#1565e8;
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:42px;
+}
+
+.login-card h2{
+    text-align:center;
+    margin-top:25px;
+    color:#1565e8;
+    font-size:34px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#777;
+    margin:12px 0 35px;
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+.form-group{
+    margin-bottom:22px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#444;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#1565e8;
+    box-shadow:0 0 10px rgba(21,101,232,.15);
+}
+/* ===========================
+   PASSWORD BOX
+=========================== */
+
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    width:100%;
+    padding:14px 45px 14px 14px;
+}
+
+.password-box span{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#666;
+    font-size:20px;
+    transition:.3s;
+}
+
+.password-box span:hover{
+    color:#1565e8;
+}
+
+/* ===========================
+   LOGIN OPTIONS
+=========================== */
+
+.login-options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px 0 30px;
+    font-size:15px;
+}
+
+.login-options label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    color:#555;
+}
+
+.login-options input{
+    width:16px;
+    height:16px;
+    cursor:pointer;
+}
+
+.login-options a{
+    text-decoration:none;
+    color:#1565e8;
+    font-weight:600;
+}
+
+.login-options a:hover{
+    text-decoration:underline;
+}
+
+/* ===========================
+   LOGIN BUTTON
+=========================== */
+
+.login-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#1565e8;
+    color:#fff;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    background:#0d47c7;
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(21,101,232,.35);
+}
+
+/* ===========================
+   CARD ANIMATION
+=========================== */
+
+.login-card{
+    animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+    .login-container{
+        flex-direction:column;
+    }
+
+    .login-left{
+        min-height:300px;
+    }
+
+    .hospital-content{
+        text-align:center;
+    }
+
+    .hospital-content h1{
+        font-size:42px;
+    }
+
+    .hospital-content p{
+        font-size:18px;
+    }
+
+    .login-right{
+        padding:40px 20px;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .login-card{
+        width:100%;
+        padding:30px 20px;
+    }
+
+    .hospital-content h1{
+        font-size:32px;
+    }
+
+    .hospital-content p{
+        font-size:16px;
+    }
+
+    .login-options{
+        flex-direction:column;
+        gap:15px;
+        align-items:flex-start;
+    }
+
+}
