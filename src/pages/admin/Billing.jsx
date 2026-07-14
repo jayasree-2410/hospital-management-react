@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import ReceptionistSidebar from "../../components/ReceptionistSidebar";
+import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
 
 import "../../styles/Dashboard.css";
@@ -54,10 +54,10 @@ function Billing() {
 
   return (
     <div className="dashboard">
-      <ReceptionistSidebar />
+      <Sidebar />
 
       <div className="dashboard-content">
-        <Topbar role="receptionist" />
+        <Topbar />
 
         <div className="container-fluid mt-4 px-4">
 
@@ -65,7 +65,7 @@ function Billing() {
             <h2>Billing Management</h2>
 
             <Link
-              to="/receptionist/billing/add"
+              to="/admin/billing/add"
               className="btn btn-primary"
             >
               + Add Bill
@@ -120,7 +120,7 @@ function Billing() {
                       <td>
 
                         <Link
-                          to={`/receptionist/billing/edit/${bill.bill_id}`}
+                          to={`/admin/billing/edit/${bill.bill_id}`}
                           className="btn btn-warning btn-sm me-2"
                         >
                           Edit

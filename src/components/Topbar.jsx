@@ -1,11 +1,11 @@
 import { FaBell, FaUserCircle } from "react-icons/fa";
 import "../styles/Topbar.css";
 
-function Topbar() {
+function Topbar({role}) {
   return (
     <div className="topbar">
 
-      <h3>Welcome Admin 👋</h3>
+      <h4>Welcome {role} 👋</h4>
 
       <div className="topbar-right">
 

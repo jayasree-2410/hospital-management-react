@@ -21,7 +21,7 @@ function AdminDashboard() {
 
       <div className="dashboard-content">
 
-        <Topbar />
+        <Topbar role="Admin" />
 
         <div className="cards">
 

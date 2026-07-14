@@ -2,81 +2,85 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import ReceptionistSidebar from "../../components/ReceptionistSidebar";
+import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
 
 import "../../styles/Dashboard.css";
 
-function Billing() {
-  const [bills, setBills] = useState([]);
+function Laboratory() {
+  const [tests, setTests] = useState([]);
   const [search, setSearch] = useState("");
 
-
-  function fetchBills() {
+  function fetchTests() {
     axios
-      .get("http://127.0.0.1:5000/billing")
+      .get("http://127.0.0.1:5000/laboratory")
       .then((res) => {
-        setBills(res.data);
+        setTests(res.data);
       })
       .catch((err) => {
         console.log(err);
-        alert("Unable to fetch bills");
+        alert("Unable to fetch laboratory tests");
       });
   }
   useEffect(() => {
-    fetchBills();
+    fetchTests();
   }, []);
 
-  function deleteBill(id) {
+  function deleteTest(id) {
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this bill?"
+      "Are you sure you want to delete this test?"
     );
 
     if (!confirmDelete) return;
 
     axios
-      .delete(`http://127.0.0.1:5000/billing/${id}`)
+      .delete(`http://127.0.0.1:5000/laboratory/${id}`)
       .then((res) => {
         alert(res.data.message);
-        fetchBills();
+        fetchTests();
       })
       .catch((err) => {
         console.log(err);
-        alert("Unable to delete bill");
+        alert("Unable to delete test");
       });
   }
 
-  const filteredBills = bills.filter((bill) =>
-    bill.patient_name.toLowerCase().includes(search.toLowerCase()) ||
-    bill.payment_status.toLowerCase().includes(search.toLowerCase()) ||
-    bill.payment_method.toLowerCase().includes(search.toLowerCase())
+  const filteredTests = tests.filter((test) =>
+    test.patient_name.toLowerCase().includes(search.toLowerCase()) ||
+    test.doctor_name.toLowerCase().includes(search.toLowerCase()) ||
+    test.test_name.toLowerCase().includes(search.toLowerCase()) ||
+    test.status.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="dashboard">
-      <ReceptionistSidebar />
+
+      <Sidebar />
 
       <div className="dashboard-content">
-        <Topbar role="receptionist" />
+
+        <Topbar />
 
         <div className="container-fluid mt-4 px-4">
 
           <div className="d-flex justify-content-between align-items-center mb-4">
-            <h2>Billing Management</h2>
+
+            <h2>Laboratory Management</h2>
 
             <Link
-              to="/receptionist/billing/add"
+              to="/admin/laboratory/add"
               className="btn btn-primary"
             >
-              + Add Bill
+              + Add Test
             </Link>
+
           </div>
 
           <div className="mb-3">
             <input
               type="text"
               className="form-control"
-              placeholder="Search Bill..."
+              placeholder="Search Laboratory Test..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -87,40 +91,38 @@ function Billing() {
             <table className="table table-bordered table-hover text-center align-middle">
 
               <thead className="table-primary">
+
                 <tr>
-                  <th>Bill ID</th>
+                  <th>Lab ID</th>
                   <th>Patient</th>
-                  <th>Consultation</th>
-                  <th>Laboratory</th>
-                  <th>Medicine</th>
-                  <th>Total</th>
+                  <th>Doctor</th>
+                  <th>Test Name</th>
+                  <th>Result</th>
+                  <th>Test Date</th>
                   <th>Status</th>
-                  <th>Method</th>
-                  <th>Date</th>
                   <th>Actions</th>
                 </tr>
+
               </thead>
 
               <tbody>
 
-                {filteredBills.length > 0 ? (
-                  filteredBills.map((bill) => (
-                    <tr key={bill.bill_id}>
+                {filteredTests.length > 0 ? (
+                  filteredTests.map((test) => (
+                    <tr key={test.lab_id}>
 
-                      <td>{bill.bill_id}</td>
-                      <td>{bill.patient_name}</td>
-                      <td>₹ {bill.consultation_fee}</td>
-                      <td>₹ {bill.laboratory_fee}</td>
-                      <td>₹ {bill.medicine_fee}</td>
-                      <td>₹ {bill.total_amount}</td>
-                      <td>{bill.payment_status}</td>
-                      <td>{bill.payment_method}</td>
-                      <td>{bill.bill_date}</td>
+                      <td>{test.lab_id}</td>
+                      <td>{test.patient_name}</td>
+                      <td>{test.doctor_name}</td>
+                      <td>{test.test_name}</td>
+                      <td>{test.result}</td>
+                      <td>{test.test_date}</td>
+                      <td>{test.status}</td>
 
                       <td>
 
                         <Link
-                          to={`/receptionist/billing/edit/${bill.bill_id}`}
+                          to={`/admin/laboratory/edit/${test.lab_id}`}
                           className="btn btn-warning btn-sm me-2"
                         >
                           Edit
@@ -128,7 +130,7 @@ function Billing() {
 
                         <button
                           className="btn btn-danger btn-sm"
-                          onClick={() => deleteBill(bill.bill_id)}
+                          onClick={() => deleteTest(test.lab_id)}
                         >
                           Delete
                         </button>
@@ -139,7 +141,7 @@ function Billing() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="10">No Bills Found</td>
+                    <td colSpan="8">No Laboratory Tests Found</td>
                   </tr>
                 )}
 
@@ -150,9 +152,11 @@ function Billing() {
           </div>
 
         </div>
+
       </div>
+
     </div>
   );
 }
 
-export default Billing;
+export default Laboratory;

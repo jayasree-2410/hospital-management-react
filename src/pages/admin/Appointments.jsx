@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import ReceptionistSidebar from "../../components/ReceptionistSidebar";
+import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
 
 import "../../styles/Dashboard.css";
@@ -60,10 +60,10 @@ function Appointments() {
 
   return (
     <div className="dashboard">
-      <ReceptionistSidebar />
+      <Sidebar />
 
       <div className="dashboard-content">
-        <Topbar role="Receptionist" />
+        <Topbar />
 
         <div className="container-fluid mt-4 px-4">
 
@@ -71,7 +71,7 @@ function Appointments() {
             <h2>Appointments Management</h2>
 
             <Link
-              to="/receptionist/appointments/add"
+              to="/admin/appointments/add"
               className="btn btn-primary"
             >
               + Add Appointment
@@ -122,7 +122,7 @@ function Appointments() {
 
                       <td>
                         <Link
-                          to={`/receptionist/appointments/edit/${appointment.appointment_id}`}
+                          to={`/admin/appointments/edit/${appointment.appointment_id}`}
                           className="btn btn-warning btn-sm me-2"
                         >
                           Edit
